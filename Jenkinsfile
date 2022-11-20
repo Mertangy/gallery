@@ -25,7 +25,7 @@ pipeline {
         steps{
             withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
               sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/rocky-chamber-48001.git master'
-              sh 'node server'
+              sh 'node server.js'
                 
             }
         }
