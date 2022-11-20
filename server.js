@@ -11,7 +11,7 @@ let image = require('./routes/image');
 //let mongodb_url = 'mongodb://localhost:27017/';
 let mongodb_url = process.env.MONGODB_URI;
 let dbName = 'darkroom';
-mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
+mongoose.connect('${mongodb_url}${dbName}',{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
     if (err) console.log(err)
 });
 
