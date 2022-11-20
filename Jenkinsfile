@@ -1,5 +1,8 @@
 pipeline { 
   agent any
+  tools {
+    nodejs 'Node v 19.1.0'
+  }
   stages { 
     stage('clone repository') {
       steps { 
