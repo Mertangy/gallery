@@ -8,6 +8,7 @@ let index = require('./routes/index');
 let image = require('./routes/image');
 
 // connecting the databases
+//mongo atlas connection
 //let mongodb_url = 'mongodb+srv://mertangy:mertangy2022@gallery.cj6v9ym.mongodb.net/darkroom?retryWrites=true&w=majority';
 let mongodb_url = process.env.mongodb_url
 let dbName = 'darkroom';
