@@ -22,15 +22,12 @@ pipeline {
     //     }
     // }
     stage('Deploying to heroku'){
-        steps{
-            sh 'git push https://git.heroku.com/rocky-chamber-48001.git master'
-            sh 'node server.js'
-            // withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
-            //   sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/rocky-chamber-48001.git master'
-            //   sh 'node server.js'
-                
-            //}
-        }
+        steps{  
+        withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
+        sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/rocky-chamber-48001.git master'
+        sh 'node server.js'
+      }
+    }
         
     }
     }
