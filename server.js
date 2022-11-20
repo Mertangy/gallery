@@ -8,7 +8,8 @@ let index = require('./routes/index');
 let image = require('./routes/image');
 
 // connecting the databases
-let mongodb_url = 'mongodb+srv://mertangy:mertangy2022@gallery.cj6v9ym.mongodb.net/darkroom?retryWrites=true&w=majority';
+//let mongodb_url = 'mongodb+srv://mertangy:mertangy2022@gallery.cj6v9ym.mongodb.net/darkroom?retryWrites=true&w=majority';
+let mongodb_url = process.env.mongodb_url
 let dbName = 'darkroom';
 mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
     if (err) console.log(err)
