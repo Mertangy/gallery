@@ -7,7 +7,7 @@ const path = require('path');
 let index = require('./routes/index');
 let image = require('./routes/image');
 
-// connecting the database
+// connecting the databases
 //let mongodb_url = 'mongodb://localhost:27017/';
 let mongodb_url = process.env.MONGODB_URI;
 let dbName = 'darkroom';
