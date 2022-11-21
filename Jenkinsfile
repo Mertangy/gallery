@@ -33,7 +33,7 @@ pipeline {
 
     post {
       failure{
-         emailext body: '$(err)', subject: 'Failed tests', to: 'eric.magesho@student.moringaschool.com'
+         emailext body: 'Your test failed', subject: 'Tests fail', to: 'eric.magesho@student.moringaschool.com'
 
       }
     }
