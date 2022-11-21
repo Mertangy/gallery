@@ -4,10 +4,7 @@ pipeline {
     nodejs 'Node v 19.1.0'
   }
 
-  environment{
-    BUILD_ID
-    BUILD_URL
-  }
+
   stages { 
     stage('clone repository') {
       steps { 
@@ -38,7 +35,7 @@ pipeline {
 
     post {
       success {
-        slackSend channel: '#general', color: 'good', message: 'Build number $BUILD_NUMBER deployed to $BUILD_URL successfully', teamDomain: 'eric_ip1'
+        slackSend channel: '#general', color: 'good', message: 'Build number ${env.BUILD_NUMBER} deployed to ${env.BUILD_URL} successfully', teamDomain: 'eric_ip1'
 
       }
       failure{
