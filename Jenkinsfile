@@ -36,7 +36,7 @@ pipeline {
 
     post {
       success {
-        slackSend channel: '#general', color: 'good', message: "Build number ${env.BUILD_ID} deployed to ${env.JENKINS_URL} successfully", teamDomain: 'eric_ip1'
+        slackSend channel: '#general', color: 'good', message: "Build number ${env.BUILD_ID} deployed to ${env.BUILD_URL} successfully", teamDomain: 'eric_ip1'
 
       }
       failure{
