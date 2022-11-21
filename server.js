@@ -8,6 +8,7 @@ const config = require('./_config');
 let index = require('./routes/index');
 let image = require('./routes/image');
 
+<<<<<<< HEAD
 // Initializing the app
 const app = express();
 
@@ -20,6 +21,15 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
     }else{
         console.log(`Connected to Database: ${MONGODB_URI}`)
     }
+=======
+// connecting the databases
+//mongo atlas connection
+//let mongodb_url = 'mongodb+srv://mertangy:mertangy2022@gallery.cj6v9ym.mongodb.net/darkroom?retryWrites=true&w=majority';
+let mongodb_url = process.env.mongodb_url
+let dbName = 'darkroom';
+mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
+    if (err) console.log(err)
+>>>>>>> master
 });
 
 // test if the database has connected successfully
