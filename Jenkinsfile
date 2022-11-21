@@ -18,12 +18,8 @@ pipeline {
     }
     stage('Testing project'){
        steps{
-        try{
-            sh 'npm test'
-        }catch(err){
-          emailext body: '$(err)', subject: 'Failed tests', to: 'eric.magesho@student.moringaschool.com'
-        }
-       }
+           sh 'npm test'
+           }
     }
     stage('Deploying to heroku'){
         steps{  
@@ -31,8 +27,14 @@ pipeline {
         sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/rocky-chamber-48001.git master'
 
       }
+    }     
     }
-        
     }
+
+    post {
+      failure{
+         emailext body: '$(err)', subject: 'Failed tests', to: 'eric.magesho@student.moringaschool.com'
+
+      }
     }
 }
