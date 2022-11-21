@@ -3,6 +3,11 @@ pipeline {
   tools {
     nodejs 'Node v 19.1.0'
   }
+
+  environment{
+    BUILD_ID
+    BUILD_URL
+  }
   stages { 
     stage('clone repository') {
       steps { 
@@ -16,11 +21,11 @@ pipeline {
         }
         
     }
-    stage('Testing project'){
-       steps{
-           sh 'npm test'
-           }
-    }
+    // stage('Testing project'){
+    //    steps{
+    //        sh 'npm test'
+    //        }
+    // }
     stage('Deploying to heroku'){
         steps{  
         withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
@@ -29,12 +34,18 @@ pipeline {
       }
     }     
     }
-    }
+    }s
 
     post {
+      success {
+        slackSend channel: '#general', color: 'good', message: 'Build number $BUILD_NUMBER deployed to $BUILD_URL successfully', teamDomain: 'eric_ip1'
+
+      }
       failure{
          emailext body: 'Your test failed', subject: 'Tests fail', to: 'eric.magesho@student.moringaschool.com'
 
       }
     }
 }
+
+
